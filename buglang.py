@@ -9,8 +9,8 @@ VAL = {r:i for i,r in enumerate(RUNES)}
 
 # Rune commands
 RUNE_CMD = {
-    'ᛉᚨᚦᚱ': 'putc',   # putc
-    'ᚻᚦᛁᚦ': 'halt',   # halt
+    'ᛉᚨᚦᚱ': 'putc',
+    'ᚻᚦᛁᚦ': 'halt',
 }
 
 C_EQS = [
@@ -60,7 +60,6 @@ def runes_to_int(s):
         val = val * 19 + VAL[ch]
     return val
 
-# Load program from sys.argv[1]
 if len(sys.argv) < 2:
     print("No input file provided.")
     sys.exit(1)
@@ -73,7 +72,6 @@ for line in program:
     if not line:
         continue
 
-    # Match (runes,runes)C <rune-command>
     m = re.match(r'\(([^,]+),([^)]*)\)'+str(C)+r'\s*(.*)', line)
     if m:
         a_runes, b_runes, cmd_runes = m.groups()
