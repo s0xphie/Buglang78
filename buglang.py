@@ -1,7 +1,3 @@
-# Beetle '78 runic interpreter with random runic constant C (1835)
-# Now loads program from sys.argv[1]
-# TIO-ready, pure Python
-
 import sys, random, re
 
 # Rune digit values
@@ -17,7 +13,6 @@ RUNE_CMD = {
     'ᚻᚦᛁᚦ': 'halt',   # halt
 }
 
-# Your runic equations for constant C (all evaluate to 1835)
 C_EQS = [
 "(ᛇ+(ᚼ*(ᛁ*ᛃ)))",
 "(ᛇ+(ᚼ*(ᛃ*ᛁ)))",
@@ -45,7 +40,6 @@ C_EQS = [
 "(((ᛃ*ᛁ)*ᚼ)+ᛇ)"
 ]
 
-# Convert rune expression to Python integer expression
 def rune_expr_to_python(expr):
     out = ""
     for ch in expr:
@@ -55,14 +49,11 @@ def rune_expr_to_python(expr):
             out += ch
     return out
 
-# Pick random equation and evaluate constant C
 chosen = random.choice(C_EQS)
 C = eval(rune_expr_to_python(chosen))
 
-# Print the chosen equation (like your Windows console output)
 print(chosen)
 
-# Convert runic base-19 number to integer
 def runes_to_int(s):
     val = 0
     for ch in s:
@@ -77,7 +68,6 @@ if len(sys.argv) < 2:
 with open(sys.argv[1], "r", encoding="utf-8") as f:
     program = f.read().strip().splitlines()
 
-# Execute
 for line in program:
     line = line.strip()
     if not line:
